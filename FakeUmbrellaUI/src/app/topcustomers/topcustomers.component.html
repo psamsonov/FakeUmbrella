@@ -1,0 +1,18 @@
+<h1> Top Customers</h1>
+
+{{error}}
+
+<table>
+    <tr>
+        <th>Customer</th>
+        <th>Contact Name</th>
+        <th>Phone Number</th>
+    </tr>
+    <tr *ngFor="let customer of customers">
+        <td>{{customer.customerName}}</td>
+        <td>{{customer.contactName}}</td>
+        <td>{{customer.contactPhoneNumber}}</td>
+        <td>{{customer.willRain}}</td>
+      </tr>
+
+</table>
