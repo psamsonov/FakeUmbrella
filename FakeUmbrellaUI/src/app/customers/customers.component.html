@@ -7,12 +7,16 @@
         <th>Customer</th>
         <th>Contact Name</th>
         <th>Phone Number</th>
+        <th>Location</th>
+        <th>Number of Employees</th>
     </tr>
     <tr *ngFor="let customer of customers">
         <td>{{customer.customerName}}</td>
         <td>{{customer.contactName}}</td>
         <td>{{customer.contactPhoneNumber}}</td>
-        <td>{{customer.willRain}}</td>
+        <td>{{customer.latitude}}, {{customer.longitude}}</td>
+        <td>{{customer.numberOfEmployees}}</td>
+        <td><button (click)="onClickDelete(customer.id)">Delete</button></td>
       </tr>
 
 </table>

@@ -25,6 +25,19 @@ export class CustomersComponent implements OnInit {
 
   }
 
+  onClickDelete(customerId: string): void {
+    this.client.delete(this.url + '/' + customerId).subscribe(
+      (data) =>
+      {
+        this.customers = this.customers.filter(x => x.id != customerId);
+      },
+      (error) =>
+      {
+        this.error = error.message;
+      }
+    );
+  }
+
   ngOnInit(): void {
     this.client.get(this.url).subscribe(
       (data: Customer[]) =>
