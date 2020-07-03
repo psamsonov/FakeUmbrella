@@ -1,0 +1,12 @@
+{{error}}
+
+<form name="customerForm" (ngSubmit)="onSubmit()">
+  
+    Name: <input name="name" type="text" [(ngModel)]="customer.customerName" required> <br>
+    Contact: <input name="contact" type="text" [(ngModel)]="customer.contactName" required> <br>
+    Latitude: <input name ="latitude" type="text"  [(ngModel)]="customer.latitude" required> <br>
+    Longitude: <input name ="longitude" type="text"  [(ngModel)]="customer.longitude" required> <br>
+    Number of employees: <input name="employees" type="number"  [(ngModel)]="customer.numberOfEmployees" required> <br>
+    <button type="submit">Submit</button>
+
+</form>
