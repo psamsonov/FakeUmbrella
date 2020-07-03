@@ -14,6 +14,12 @@ namespace FakeUmbrellaAPI.Services
             return CustomerRepository.GetCustomers();
         }
 
+        public static Customer GetCustomer(Guid id)
+        {
+            return CustomerRepository.GetCustomer(id);
+        }
+
+
         public static IEnumerable<Customer> GetCustomersForRain()
         {
             var customers =  CustomerRepository.GetCustomers();

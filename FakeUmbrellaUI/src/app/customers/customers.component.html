@@ -16,6 +16,7 @@
         <td>{{customer.contactPhoneNumber}}</td>
         <td>{{customer.latitude}}, {{customer.longitude}}</td>
         <td>{{customer.numberOfEmployees}}</td>
+        <td><a [routerLink]="['/edit-customer', customer.id ]">Edit</a> </td>
         <td><button (click)="onClickDelete(customer.id)">Delete</button></td>
       </tr>
 

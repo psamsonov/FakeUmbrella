@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { Customer } from '../customer';
 import { Validators } from '@angular/forms';
 import { CustomersComponent } from '../customers/customers.component';
+import { Router } from '@angular/router';
 
 
 @Injectable()
@@ -21,7 +22,7 @@ export class AddCustomerComponent {
   error = null;
 
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private router: Router) {
     this.client = http;
 
   }
@@ -32,7 +33,7 @@ export class AddCustomerComponent {
     this.client.post(this.url, this.customer).subscribe(
       (data) =>
       {
-        
+        this.router.navigate(['/customers'])
       },
       (error) =>
       {

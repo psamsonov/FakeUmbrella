@@ -28,6 +28,22 @@ namespace FakeUmbrellaAPI.Repository
             }
         }
 
+        public static Customer GetCustomer(Guid customerId)
+        {
+            using (var db = new CustomerContext())
+            {
+                var entity = db.Customers.AsNoTracking().Where(x => x.Id == customerId).FirstOrDefault();
+                if (entity != null)
+                {
+                    return entity;
+                }
+                else
+                {
+                    throw new NotFoundException();
+                }
+            }
+        }
+
         public static void DeleteCustomer(Guid customerId)
         {
             using (var db = new CustomerContext())

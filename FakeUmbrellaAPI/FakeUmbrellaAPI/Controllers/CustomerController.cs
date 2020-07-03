@@ -49,6 +49,20 @@ namespace FakeUmbrellaAPI.Controllers
 
         }
 
+        [HttpGet("{id}")]
+        public ActionResult<Customer> GetCustomer([FromRoute] Guid id)
+        {
+            try
+            {
+                return Ok(CustomerService.GetCustomer(id));
+            }
+            catch (NotFoundException)
+            {
+                return NotFound();
+            }
+        }
+
+
         [HttpDelete("{id}")]
         public ActionResult DeleteCustomer([FromRoute] Guid id)
         {
