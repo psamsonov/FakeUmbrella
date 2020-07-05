@@ -27,10 +27,12 @@ namespace FakeUmbrellaAPI.Services
 
             customers.ToList().ForEach((x) =>
             {
+                var willItRain = WeatherService.WillItRain(x.Latitude, x.Longitude);
                 //Explicitly checking for true since it can also be null
-                if (WeatherService.WillItRain(x.Latitude, x.Longitude) == true)
+                if (!string.IsNullOrEmpty(willItRain))
                 {
                     x.WillRain = true;
+                    x.WhenWillItRain = willItRain;
                     rainCustomers.Add(x);
                 }
             } );
@@ -67,7 +69,9 @@ namespace FakeUmbrellaAPI.Services
 
             foreach (var customer in customers)
             {
-                customer.WillRain = WeatherService.WillItRain(customer.Latitude, customer.Longitude);
+                var whenWillItRain = WeatherService.WillItRain(customer.Latitude, customer.Longitude);
+                customer.WillRain = !String.IsNullOrWhiteSpace(whenWillItRain);
+                customer.WhenWillItRain = whenWillItRain;
             }
 
             return customers;

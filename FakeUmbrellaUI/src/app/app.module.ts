@@ -9,6 +9,7 @@ import { TopCustomersComponent } from './topcustomers/topcustomers.component';
 import { AddCustomerComponent } from './add-customer/add-customer.component';
 import { EditCustomerComponent } from './edit-customer/edit-customer.component';
 import { FormsModule } from '@angular/forms';
+import { RainReportComponent } from './rain-report/rain-report.component';
 
 
 
@@ -16,7 +17,9 @@ const routes: Routes = [
   { path: 'customers', component: CustomersComponent },
   { path: 'topcustomers', component: TopCustomersComponent },
   { path: 'add-customer', component: AddCustomerComponent },
-  { path: 'edit-customer/:id', component: EditCustomerComponent }
+  { path: 'edit-customer/:id', component: EditCustomerComponent },
+  { path: 'rain-report', component: RainReportComponent }
+
 ];
 
 @NgModule({
@@ -25,7 +28,8 @@ const routes: Routes = [
     CustomersComponent,
     TopCustomersComponent,
     AddCustomerComponent,
-    EditCustomerComponent
+    EditCustomerComponent,
+    RainReportComponent
   ],
   imports: [
     BrowserModule,

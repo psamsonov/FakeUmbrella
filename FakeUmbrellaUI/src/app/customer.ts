@@ -6,5 +6,6 @@ export class Customer {
     latitude: string;
     longitude: string;
     numberOfEmployees: number;
-    willRain: boolean
+    willRain: boolean;
+    whenWillItRain: string;
 }

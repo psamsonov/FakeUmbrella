@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace FakeUmbrellaAPI.Services
@@ -19,7 +21,7 @@ namespace FakeUmbrellaAPI.Services
             client.BaseAddress = new Uri("http://api.openweathermap.org");
         }
 
-        public static bool? WillItRain(string latitude, string longitude)
+        public static string WillItRain(string latitude, string longitude)
         {
             var parameters = new List<string>();
             parameters.Add("appid=" + API_KEY);
@@ -32,8 +34,20 @@ namespace FakeUmbrellaAPI.Services
             }
 
             var content = response.Content.ReadAsStringAsync().Result;
-            // Very bad result parsing, to fix later
-            return content.Contains("Rain");
+            var forecast = JsonSerializer.Deserialize<OWMForecastObject>(content);
+
+            foreach (var list in forecast.list)
+            {
+                foreach(var weather in list.weather)
+                {
+                    if (weather.main.Contains("Rain"))
+                    {
+                        return list.dt_txt;
+                    }
+                }
+            }
+
+            return String.Empty;
            
         }
     }

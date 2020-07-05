@@ -1,4 +1,4 @@
-<h1>Customers</h1>
+<h1>Rain Report</h1>
 
 <span class="error">{{error}}</span>
 
@@ -7,17 +7,13 @@
         <th>Customer</th>
         <th>Contact Name</th>
         <th>Phone Number</th>
-        <th>Location</th>
-        <th>Number of Employees</th>
+        <th>Rain Expected</th>
     </tr>
     <tr *ngFor="let customer of customers">
         <td>{{customer.customerName}}</td>
         <td>{{customer.contactName}}</td>
         <td>{{customer.contactPhoneNumber}}</td>
-        <td>{{customer.latitude}}, {{customer.longitude}}</td>
-        <td>{{customer.numberOfEmployees}}</td>
-        <td><a [routerLink]="['/edit-customer', customer.id ]">Edit</a> </td>
-        <td><button (click)="onClickDelete(customer.id)">Delete</button></td>
+        <td>{{customer.whenWillItRain}}</td>
       </tr>
 
 </table>

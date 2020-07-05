@@ -23,5 +23,8 @@ namespace FakeUmbrellaAPI.Models
         [NotMapped]
         public bool? WillRain { get; set; }
 
+        [NotMapped]
+        public string WhenWillItRain { get; set; }
+
     }
 }
