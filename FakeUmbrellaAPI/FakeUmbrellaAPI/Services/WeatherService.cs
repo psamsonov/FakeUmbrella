@@ -19,7 +19,7 @@ namespace FakeUmbrellaAPI.Services
             client.BaseAddress = new Uri("http://api.openweathermap.org");
         }
 
-        public static bool WillItRain(string latitude, string longitude)
+        public static bool? WillItRain(string latitude, string longitude)
         {
             var parameters = new List<string>();
             parameters.Add("appid=" + API_KEY);
@@ -28,7 +28,7 @@ namespace FakeUmbrellaAPI.Services
             var response = client.GetAsync("/data/2.5/forecast?" + string.Join('&', parameters)).Result;
             if (!response.IsSuccessStatusCode)
             {
-                throw new WeatherAPIUnavailableException();
+                return null;
             }
 
             var content = response.Content.ReadAsStringAsync().Result;

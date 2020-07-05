@@ -27,7 +27,8 @@ namespace FakeUmbrellaAPI.Services
 
             customers.ToList().ForEach((x) =>
             {
-                if (WeatherService.WillItRain(x.Latitude, x.Longitude))
+                //Explicitly checking for true since it can also be null
+                if (WeatherService.WillItRain(x.Latitude, x.Longitude) == true)
                 {
                     x.WillRain = true;
                     rainCustomers.Add(x);
