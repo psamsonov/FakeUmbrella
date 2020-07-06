@@ -21,3 +21,4 @@ The following were omitted due to time constraints:
 * A more robust database than SQLite
 * Pretty UI styling
 * More user friendly error messaging mechanism
+* Concealment of the API token
