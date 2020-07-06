@@ -7,5 +7,6 @@ namespace FakeUmbrellaAPI.Exceptions
 {
     public class WeatherAPIUnavailableException : Exception
     {
+        public WeatherAPIUnavailableException(string message) : base(message) { }
     }
 }

@@ -31,7 +31,7 @@ namespace FakeUmbrellaAPI.Controllers
         public ActionResult CreateCustomer([FromBody] Customer customer)
         {
             CustomerService.CreateCustomer(customer);
-            return Ok();
+            return NoContent();
         }
 
         [HttpPut("{id}")]
@@ -40,7 +40,7 @@ namespace FakeUmbrellaAPI.Controllers
             try
             {
                 CustomerService.UpdateCustomer(id, customer);
-                return Ok();
+                return NoContent();
             }
             catch (NotFoundException)
             {
@@ -69,7 +69,7 @@ namespace FakeUmbrellaAPI.Controllers
             try
             {
                 CustomerService.DeleteCustomer(id);
-                return Ok();
+                return NoContent();
             }
             catch (NotFoundException)
             {
@@ -81,7 +81,7 @@ namespace FakeUmbrellaAPI.Controllers
         [Route("rain")]
         public ActionResult<IEnumerable<Customer>> GetCustomersWithRain()
         {
-            return Ok(CustomerService.GetCustomersWithRain());
+            return Ok(CustomerService.GetCustomersWithRain());            
         }
 
         [Route("top")]
