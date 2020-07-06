@@ -17,7 +17,7 @@ namespace FakeUmbrellaAPI.Tests
         public void TestConnectToAPI()
         {
             //Make sure you can get API data without an exception
-            WeatherService.WillItRain("37.7510", "-97.8220");
+            WeatherService.WillItRain("43.6622121", "-79.3818211");
             Assert.Pass();
         }
 

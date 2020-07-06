@@ -31,6 +31,9 @@ namespace FakeUmbrellaAPI.Services
 
         public static string ExtractAPIResponse(OWMForecastObject forecast)
         {
+            if (forecast == null)
+                return String.Empty;
+
             foreach (var list in forecast.list)
             {
                 foreach (var weather in list.weather)
@@ -51,10 +54,11 @@ namespace FakeUmbrellaAPI.Services
             parameters.Add("appid=" + API_KEY);
             parameters.Add("lat=" + latitude);
             parameters.Add("lon=" + longitude);
-            var response = client.GetAsync("/data/2.5/forecast?" + string.Join('&', parameters)).Result;
+            string url = "/data/2.5/forecast?" + string.Join('&', parameters);
+            var response = client.GetAsync(url).Result;
             if (!response.IsSuccessStatusCode)
             {
-                throw new WeatherAPIUnavailableException("Weather API unavailable: " + response.StatusCode);
+                return null;
             }
 
             var content = response.Content.ReadAsStringAsync().Result;
